@@ -132,7 +132,8 @@ router.put("/:id", async function(req, res, next){
 
 
 
-//delete product---------not completed-------when product deleted order not deleted 
+//delete product
+//status : not completedwhen product deleted order not deleted 
 //found 15.43 pm
 router.delete("/:id", async function(req, res, next){
     try{
