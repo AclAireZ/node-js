@@ -132,7 +132,8 @@ router.put("/:id", async function(req, res, next){
 
 
 
-//delete product
+//delete product---------not completed-------when product deleted order not deleted 
+//found 15.43 pm
 router.delete("/:id", async function(req, res, next){
     try{
         let id = req.params.id;
@@ -146,7 +147,7 @@ router.delete("/:id", async function(req, res, next){
             });
         }
 
-        await productModel.deleteOne({_id: id, orderId: req.params.order});
+        await productModel.deleteOne({_id: id});
         let products = await productModel.find();
         return res.status(200).send({
             data: products,
