@@ -133,7 +133,7 @@ router.put("/:id", async function(req, res, next){
 
 
 //delete product
-//status : not completedwhen product deleted order not deleted 
+//status : not completed when product deleted, order not deleted 
 //found 15.43 pm
 router.delete("/:id", async function(req, res, next){
     try{
@@ -184,8 +184,12 @@ router.post('/:id/orders', async (req, res) => {
             return res.status(404).json({ error: 'Product not found' });
         }
 
+        if(amount === 0){
+            return res.status(400).json({ message: 'u need to add amount of order'});
+        }
+
         if (product.amount === 0 || product.amount < amount) {
-            return res.status(400).json({ error: 'Product is out of stock' });
+            return res.status(400).json({ error: 'Product is out of stock or More than amount the stock' });
         }
 
         // Create a new order
