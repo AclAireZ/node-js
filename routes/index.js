@@ -53,7 +53,7 @@ router.post('/login', async function (req, res, next) {
 
       return res.status(200).send({
           data: {
-             status: 200,
+             
               _id: user._id,
             //   username: user.username,
               firstName: user.firstName,
@@ -62,6 +62,7 @@ router.post('/login', async function (req, res, next) {
               role: user.role,
               token
           },
+          status: 200,
           message: "Login successful.",
           success: true,
       });

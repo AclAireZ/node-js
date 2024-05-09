@@ -131,6 +131,8 @@ router.put("/:id", async function(req, res, next){
 });
 
 
+
+//delete product
 router.delete("/:id", async function(req, res, next){
     try{
         let id = req.params.id;
@@ -144,11 +146,11 @@ router.delete("/:id", async function(req, res, next){
             });
         }
 
-        await productModel.deleteOne({_id: id});
+        await productModel.deleteOne({_id: id, orderId: req.params.order});
         let products = await productModel.find();
         return res.status(200).send({
-            status: 200,
             data: products,
+            status: 200,
             message: "Product deleted successfully",
             success: true,
         });
