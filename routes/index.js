@@ -11,6 +11,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
+//login user
 router.post('/login', async function (req, res, next) {
   try {
       let { password, username } = req.body;

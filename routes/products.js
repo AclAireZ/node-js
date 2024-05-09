@@ -44,9 +44,10 @@ router.get("/:id", async function(req, res, next){
         let id = req.params.id;
         if(!mongoose.Types.ObjectId.isValid(id)){
             return res.status(400).send({
+                status: 400,
                 message: "invalid id",
                 success: false,
-                error: ["id is not a ObjectId"],
+                
             });
         }
         let products = await productModel.findById(id).populate('order');
@@ -65,11 +66,10 @@ router.get("/:id", async function(req, res, next){
     }
 });
 
-
+//get products by id
 router.post("/", async function(req, res, next){
     //if u want to upload use this code -->router.post("/",upload.single('nameImage'), async function(req, res, next)
     try{
-      
     
         const { product_name, price, amount} = req.body;
         let newProduct = new productModel({
@@ -94,16 +94,15 @@ router.post("/", async function(req, res, next){
     }
 });
 
-
-
+//edit product
 router.put("/:id", async function(req, res, next){
     try{
         let id = req.params.id;
         if(!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).send({
+                status: 400,
                 message: "Invalid id",
                 success: false,
-                error: ["id is not a ObjectId"],
             });
         }
 

@@ -4,6 +4,7 @@ const Order = require('../models/orders');
 const Product = require('../models/products');
 const mongoose = require('mongoose');
 
+//get all orders
 router.get("/", async function(req, res){
     try {
         let orders = await Order.find();
@@ -22,6 +23,7 @@ router.get("/", async function(req, res){
     }
 });
 
+//delete order
 router.delete("/:id/cancelorder", async function(req, res){
     try {
         let orderId = req.params.id; 

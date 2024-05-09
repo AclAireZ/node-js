@@ -22,7 +22,7 @@ const authorizationUser = (req, res, next) => {
     } catch (error) {
         return res.status(400).json({
             status: 400,
-            message: "Unauthorized access. Admin role required or invalid token."
+            message: "Unauthorized access. Admin or User role required or invalid token."
         });
     }
 }
